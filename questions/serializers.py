@@ -3,7 +3,8 @@ from .models import Question
 
 
 class QuestionsSerializer(serializers.ModelSerializer):
+    # question_author = serializers.StringRelatedField()
+    slug = serializers.SlugField(read_only=True)
     class Meta:
-        slug = serializers.SlugField(read_only=True)
         model = Question
         fields = '__all__'

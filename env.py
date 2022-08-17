@@ -1,3 +1,3 @@
 import os
 
-os.environ['SECRET_KEY'] = 'django-insecure-gva&_1^=)w+sg@f&1(yt0wecuyndp)q_mqgd-#0ud9!h7d4d@j'
+os.environ['SECRET_KEY'] = 'asd;kj*&6lk(3##aolj382398s-32jlskdjfldlke'
