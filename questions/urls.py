@@ -8,4 +8,8 @@ router.register('questions', QuestionViewSet, basename='questions')
 
 urlpatterns = [
     path('', include(router.urls)),
+    
+    # path('accounts/', include('allauth.urls')),
+    
+
 ]
