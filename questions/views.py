@@ -8,3 +8,6 @@ class QuestionViewSet(viewsets.ModelViewSet):
     serializer_class = QuestionsSerializer
     lookup_field = 'slug'
 
+    def perform_create(self, serializer):
+        serializer.save(question_author=self.request.user)
+
