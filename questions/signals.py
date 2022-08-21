@@ -5,8 +5,9 @@ from django.utils.text import slugify
 from random import randrange
 
 
+
 @receiver(pre_save, sender=Question)
 def generate_slug(sender, instance, *args, **kwargs):
     if instance and not instance.slug:
-        slug = slugify(f"{instance.question_summary}-{randrange(10)}-{instance.question_author}")
+        slug = slugify(f"{instance.question_summary}-{instance.serial}")
         instance.slug = slug
