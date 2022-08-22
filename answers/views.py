@@ -4,13 +4,15 @@ from .serializers import AnswersSerializer
 from questions.serializers import QuestionsSerializer
 from rest_framework import viewsets
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
-# from .permissions import IsAnswerAuthor
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsQuestionAuthor
 from django.shortcuts import render, get_object_or_404
 
 
 class CreateAnswer(CreateAPIView):
     queryset = Answer.objects.all()
     serializer_class = AnswersSerializer
+    permission_classes = [IsAuthenticated, IsQuestionAuthor]
 
     def perform_create(self, serializer):
         user = self.request.user
@@ -21,6 +23,7 @@ class CreateAnswer(CreateAPIView):
 
 class ListAnswer(ListAPIView):
     serializer_class = AnswersSerializer
+    permission_classes = [IsAuthenticated, IsQuestionAuthor]
 
     def get_queryset(self):
         slug = self.kwargs.get('slug')
@@ -29,3 +32,4 @@ class ListAnswer(ListAPIView):
 class AnswerDetails(RetrieveUpdateDestroyAPIView):
     queryset = Answer.objects.all()
     serializer_class = AnswersSerializer
+    permission_classes = [IsAuthenticated, IsQuestionAuthor]
